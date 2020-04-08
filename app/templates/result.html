@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="container">
+        <div class="col-sm-24" style="margin-left:auto; margin-right: auto; margin-top:5px; height: 100%;">
+            <div class="alert alert-info">
+                            
+                <h1 class="lead-text">
+                    Your Result
+                </h1>
+                <br/>
+                
+                <p class="text-lead">
+                {% if prediction == 1 %}
+                    <h3>The system has predicted presence of heart disease</h3>
+                {% else %}
+                    <h3>The system has predicted absence of heart disease</h3>
+                {% endif %}
+                </p>
+            </div>        
+
+        </div>
+    </div>
+{% endblock content %}

@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Heart</title>
+
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+        crossorigin="anonymous"> 
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+</head>
+
+<body style="background-image:url(''); background-repeat: no-repeat; background-size: 100%;">
+    <div class="container">
+        <div class="col-sm-10" style="width:60%; margin-left:auto; margin-right: auto; margin-top:10%;">
+            <div class="jumbotron">
+                <div class="form-group">
+                    <h1>
+                        HEART TEST
+                    </h1>
+                    kindly fill the form below.
+                </div>
+
+                <form class="form form-horizontal" action="/check" method="POST" id="formreview">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="trestbps" name="trestbps" placeholder="trestbps">
+                        <span class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="chol" name="chol" placeholder="chol">
+                        <span class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="thalach" name="thalach" placeholder="thalach">
+                        <span class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="oldpeal" name="oldpeal" placeholder="oldpeal">
+                        <span class="text-danger"></span>
+                    </div>
+
+                    <label>Sex:</label>
+                    <div class="form-group">
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="sex" name="sex" class="custom-control-input" onclick="check(this.id)" value="male">
+                            <label class="custom-control-label" for="sex">male</label>
+                        </div>
+
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="sex f" name="sex" class="custom-control-input" onclick="check(this.id)" value="female">
+                            <label class="custom-control-label" for="sex f">female</label>
+                        </div>
+                    </div>
+
+                    <label>chest pain:</label>
+                    <div class="form-group">
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="chestpain" name="chestpain" class="custom-control-input" onclick="check(this.id)" value="Cp1">
+                            <label class="custom-control-label" for="chestpain">typical angina</label>
+                        </div>
+
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="chestpain2" name="chestpain" class="custom-control-input" onclick="check(this.id)" value="Cp2">
+                            <label class="custom-control-label" for="chestpain2">atypical angina</label>
+                        </div>
+
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="chestpain3" name="chestpain" class="custom-control-input" onclick="check(this.id)" value="Cp3">
+                            <label class="custom-control-label" for="chestpain3">non-anginal pain</label>
+                        </div>
+
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="chestpain4" name="chestpain" class="custom-control-input" onclick="check(this.id)" value="Cp4">
+                            <label class="custom-control-label" for="chestpain4">asymptomatic</label>
+                        </div>
+                    </div>
+
+                    <label>fasting blood sugar:</label>
+                    <div class="form-group">
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="fbs" name="fbs" class="custom-control-input"
+                            onclick="check(this.id)" value="1">
+                            <label class="custom-control-label" for="fbs">True</label>
+                        </div>
+
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="fbsf" name="fbs" class="custom-control-input"
+                            onclick="check(this.id)" value="0">
+                            <label class="custom-control-label" for="fbsf">False</label>
+                        </div>
+                    </div>
+
+                    <label>Resting electrocardiographic:</label>
+                    <div class="form-group">
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="R_ECG" name="R_ECG" class="custom-control-input"
+                            onclick="check(this.id)" value="0">
+                            <label class="custom-control-label" for="R_ECG">normal</label>
+                        </div>
+
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="R_ECG2" name="R_ECG" class="custom-control-input"
+                            onclick="check(this.id)" value="0">
+                            <label class="custom-control-label" for="R_ECG2">abnormal</label>
+                        </div>
+
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="R_ECG3" name="R_ECG" class="custom-control-input" 
+                            onclick="check(this.id)" value="0">
+                            <label class="custom-control-label" for="R_ECG3">left ventricular hypertrophy</label>
+                        </div>
+                    </div>
+
+                    <label>Exercise-induced angina:</label>
+                    <div class="form-group">
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="angina" name="angina" class="custom-control-input"
+                            onclick="check(this.id)" value="1">
+                            <label class="custom-control-label" for="angina">True</label>
+                        </div>
+
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="angina f" name="angina" class="custom-control-input"
+                            onclick="check(this.id)" value="0">
+                            <label class="custom-control-label" for="angina f">False</label>
+                        </div>
+                    </div>
+
+                    <label>Slope:</label>
+                    <div class="form-group">
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="slope" name="slope" class="custom-control-input" onclick="check(this.id)" value="0">
+                            <label class="custom-control-label" for="slope">slope1</label>
+                        </div>
+
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="slope2" name="slope" class="custom-control-input" onclick="check(this.id)" value="0">
+                            <label class="custom-control-label" for="slope2">slope2</label>
+                        </div>
+
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="slope3" name="slope" class="custom-control-input" onclick="check(this.id)" value="0">
+                            <label class="custom-control-label" for="slope3">slope3</label>
+                        </div>
+                    </div>
+
+                    <label>Ca:</label>
+                    <div class="form-group">
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="ca" name="ca" class="custom-control-input" onclick="check(this.id)" value="0">
+                            <label class="custom-control-label" for="ca">ca1</label>
+                        </div>
+
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="ca2" name="ca" class="custom-control-input" onclick="check(this.id)" value="0">
+                            <label class="custom-control-label" for="ca2">ca2</label>
+                        </div>
+
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="ca3" name="ca" class="custom-control-input" onclick="check(this.id)" value="0">
+                            <label class="custom-control-label" for="ca3">ca3</label>
+                        </div>
+
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="ca4" name="ca" class="custom-control-input" onclick="check(this.id)" value="0">
+                            <label class="custom-control-label" for="ca4">ca4</label>
+                        </div>
+                    </div>
+
+                    <label>Thal:</label>
+                    <div class="form-group">
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="customRadio1" name="thal" class="custom-control-input" value="thal_0">
+                            <label class="custom-control-label" for="customRadio1">thal1</label>
+                        </div>
+
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="customRadio1" name="thal" class="custom-control-input" value="thal_1">
+                            <label class="custom-control-label" for="customRadio1">thal2</label>
+                        </div>
+
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="customRadio1" name="thal" class="custom-control-input" value="thal_2">
+                            <label class="custom-control-label" for="customRadio1">thal3</label>
+                        </div>
+
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="customRadio1" name="thal" class="custom-control-input" value="thal_3">
+                            <label class="custom-control-label" for="customRadio1">thal4</label>
+                        </div>
+                    </div>
+
+                    <label>Age Category:</label>
+                    <div class="form-group">
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="age" name="age" class="custom-control-input"
+                            onclick="check(this.id)" value="0">
+                            <label class="custom-control-label" for="age">25 - 30</label>
+                        </div>
+
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="age2" name="age" class="custom-control-input"
+                            onclick="check(this.id)" value="0">
+                            <label class="custom-control-label" for="age2">30 - 35</label>
+                        </div>
+
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="age3" name="age" class="custom-control-input"
+                            onclick="check(this.id)" value="0">
+                            <label class="custom-control-label" for="age3">35 - 40</label>
+                        </div>
+
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="age4" name="age" class="custom-control-input"
+                            onclick="check(this.id)" value="0">
+                            <label class="custom-control-label" for="age4">40 - 45</label>
+                        </div>
+
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="age5" name="age" class="custom-control-input"
+                            onclick="check(this.id)" value="0">
+                            <label class="custom-control-label" for="age5">45 - 50</label>
+                        </div>
+
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="age6" name="age" class="custom-control-input"
+                            onclick="check(this.id)" value="0">
+                            <label class="custom-control-label" for="age6">50 - 55</label>
+                        </div>
+
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="age7" name="age" class="custom-control-input"
+                            onclick="check(this.id)" value="0">
+                            <label class="custom-control-label" for="age7">55 - 60</label>
+                        </div>
+
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="age8" name="age" class="custom-control-input"
+                            onclick="check(this.id)" value="0">
+                            <label class="custom-control-label" for="age8">65 - 70</label>
+                        </div>
+
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="age9" name="age" class="custom-control-input"
+                            onclick="check(this.id)" value="0">
+                            <label class="custom-control-label" for="age9">70 - 75</label>
+                        </div>
+
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="age10" name="age" class="custom-control-input"
+                            onclick="check(this.id)" value="0">
+                            <label class="custom-control-label" for="age10">75 - 80</label>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <button type="submit" id="submit" class="btn btn-primary">Submit</button>
+                    </div>
+
+                </form>
+
+            </div>
+
+            <!-- <div class="form-group">
+                <a type="submit" name="btn_review" id="btn_review" class="btn btn-primary">Submit</a>
+            </div> -->
+
+            <div class="form-group">
+                <a href="#">Do you need help?</a>
+            </div>
+            </form>
+
+
+        </div>
+
+
+        <script src="/app/view/bootstrap/js/jquery.min.js"></script>
+        <script src="/app/view/bootstrap/js/popper.min.js"></script>
+        <script src="/app/static/client.js"></script>
+</body>
+</html>
